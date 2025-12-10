@@ -4,6 +4,8 @@ This year I tried to do stuff mostly in functionnal languages. I mainly know OCa
 
 Every codes are kind of commented, and I'll try to do a proper readme for every days so that I explain how I looked at the problem and how I solved it
 
+My solutions aren't made to be optimal, they are made to be easy to read/understand (atleast by me).
+
 ## Days
 
 - [X] 1 (OCaml)
