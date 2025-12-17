@@ -22,3 +22,9 @@ I can to a map that will remove these empty elements in Soluna source (OCaml).
 ## How it felt ?
 
 It felt amazingly more rewarding to solve this one. It also enlightened some issues with Soluna and that's great. I'll continue on improving Soluna from my observations on this challenge.
+
+## Update
+
+The day after completion, I fixed the split function to remove empty lists elements by default. The outdated solution is still in the repos for history reason.
+
+It should still works with Soluna >= 0.4.4 but it does a useless filter on lists.

@@ -1,6 +1,6 @@
 ; AoC 2025 (Day 6)
 ; Solved by L0Wigh in Soluna (https://github.com/L0Wigh/Soluna)
-; Updated to work with Soluna >= 0.4.4
+; Outdated. Split function received changes that avoid needing to filter out empty element of lists
 
 ; Result variable
 (defvar res (list))
@@ -15,18 +15,39 @@
 (defvar list-d (list))
 (defvar list-e (list))
 
-; Splitting every lines on spaces
-; Using map to create a second list with string numbers converted to integer numbers
+; Create clean and usable lists (aka removing useless spaces)
 (defvar counter 0)
 (each line raw_lists (do
 	(defvar counter (+ counter 1))
-	(defvar clean (split " " line))
-	(defvar int_clean (map (lambda (x) (int x)) clean))
+	(defvar clean (filter
+		(lambda (x) (< 0 (length x)))
+		(split " " line)
+	))
 	(case
-		((= counter 1) (defvar list-a int_clean))
-		((= counter 2) (defvar list-b int_clean))
-		((= counter 3) (defvar list-c int_clean))
-		((= counter 4) (defvar list-d int_clean))
+		((= counter 1)
+			(defvar list-a (map
+				(lambda (x) (int x))
+				clean
+			))
+		)
+		((= counter 2)
+			(defvar list-b (map
+				(lambda (x) (int x))
+				clean
+			))
+		)
+		((= counter 3)
+			(defvar list-c (map
+				(lambda (x) (int x))
+				clean
+			))
+		)
+		((= counter 4)
+			(defvar list-d (map
+				(lambda (x) (int x))
+				clean
+			))
+		)
 		((= counter 5) (defvar list-e clean))
 		(default ())
 	)
