@@ -11,12 +11,12 @@ My solutions aren't made to be optimal, they are made to be easy to read/underst
 - [X] 1 (OCaml)
 - [X] 3 (Gleam)
 - [X] 6 ([Soluna](https://github.com/L0Wigh/Soluna))
+- [X] 5 ([Soluna](https://github.com/L0Wigh/Soluna))
 
 ## Missing days
 
 - [ ] 2
 - [ ] 4
-- [ ] 5
 - [ ] 7
 - [ ] 8
 - [ ] 9

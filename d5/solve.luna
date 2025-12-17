@@ -1,0 +1,36 @@
+(function check (ing-ids val) (do
+	(if (null ing-ids)
+		false
+		(do
+			(defvar a (int (fst (fst ing-ids))))
+			(defvar b (int (fst (rst (fst ing-ids)))))
+			(if (>= val a)
+				(if (<= val b)
+					true
+					(check (rst ing-ids) val)
+				)
+				(check (rst ing-ids) val)
+			)
+		)
+	)
+))
+
+(function solve (file) (do
+	(defvar raw (split "\n" (read-file file) :keep-empty))
+	(defvar counter 0)
+	(defvar split-pos 0)
+	(defvar ing-ids (list))
+
+	(each elem raw (do
+		(defvar counter (+ 1 counter))
+		(if (= split-pos 0)
+			(if (= 0 (length elem))
+				(defvar split-pos counter)
+				(do (defvar ing-ids (cons (split "-" elem) ing-ids)) (defvar raw (rst raw))))
+			()
+		)
+	))
+	(writeln (length (filter (lambda (x) (check ing-ids (int x))) raw)))
+))
+
+(solve "input.txt")
