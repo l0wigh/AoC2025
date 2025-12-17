@@ -6,14 +6,17 @@ Every codes are kind of commented, and I'll try to do a proper readme for every 
 
 My solutions aren't made to be optimal, they are made to be easy to read/understand (atleast by me).
 
-## Days
+## Days done (in order of completion)
 
 - [X] 1 (OCaml)
-- [ ] 2
 - [X] 3 (Gleam)
+- [X] 6 ([Soluna](https://github.com/L0Wigh/Soluna))
+
+## Missing days
+
+- [ ] 2
 - [ ] 4
 - [ ] 5
-- [ ] 6
 - [ ] 7
 - [ ] 8
 - [ ] 9

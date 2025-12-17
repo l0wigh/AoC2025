@@ -1,0 +1,77 @@
+; AoC 2025 (Day 6)
+; Solved by L0Wigh in Soluna (https://github.com/L0Wigh/Soluna)
+
+; Result variable
+(defvar res (list))
+
+; Open the raw input
+(defvar raw_lists (split "\n" (read-file "input.txt")))
+
+; Predefine the lists that we will need
+(defvar list-a (list))
+(defvar list-b (list))
+(defvar list-c (list))
+(defvar list-d (list))
+(defvar list-e (list))
+
+; Create clean and usable lists (aka removing useless spaces)
+(defvar counter 0)
+(each line raw_lists (do
+	(defvar counter (+ counter 1))
+	(defvar clean (filter
+		(lambda (x) (< 0 (length x)))
+		(split " " line)
+	))
+	(case
+		((= counter 1)
+			(defvar list-a (map
+				(lambda (x) (int x))
+				clean
+			))
+		)
+		((= counter 2)
+			(defvar list-b (map
+				(lambda (x) (int x))
+				clean
+			))
+		)
+		((= counter 3)
+			(defvar list-c (map
+				(lambda (x) (int x))
+				clean
+			))
+		)
+		((= counter 4)
+			(defvar list-d (map
+				(lambda (x) (int x))
+				clean
+			))
+		)
+		((= counter 5) (defvar list-e clean))
+		(default ())
+	)
+))
+
+; Do the calculations
+; - Loop through each element of list-a
+; - Call math function on first element of each list and add them in res variable
+; - Remove first item of each list to go to the next elements
+(each elem list-a (do
+	(function math (x a b c d) (do
+		(case
+			((= x "+") (+ a b c d))
+			((= x "-") (- a b c d))
+			((= x "*") (* a b c d))
+			((= x "/") (/ a b c d))
+		)
+	))
+	(defvar res (cons (math (fst list-e) (fst list-a) (fst list-b) (fst list-c) (fst list-d)) res))
+	(defvar list-a (rst list-a))
+	(defvar list-b (rst list-b))
+	(defvar list-c (rst list-c))
+	(defvar list-d (rst list-d))
+	(defvar list-e (rst list-e))
+))
+
+; Use reduce to call + on every elements in res and write the result
+(writeln (reduce + 0 res))
