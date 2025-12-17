@@ -1,0 +1,32 @@
+(defvar raw_data (read-file "input.txt"))
+(defvar raw_lists (split "\n" raw_data))
+
+(defvar counter 0)
+(each line raw_lists (do
+	(defvar counter (+ 1 counter))
+	(case
+		((= counter 1) (defvar la (split " " line)))
+		((= counter 2) (defvar lb (split " " line)))
+		((= counter 3) (defvar lc (split " " line)))
+		((= counter 4) (defvar ld (split " " line)))
+		((= counter 5) (defvar le (split " " line)))
+		(default ())
+	)
+))
+
+(defvar end (length la))
+(defvar start 1)
+(defvar res (list))
+
+(while (<= start end) (do
+	(defvar calc (eval (implode (list "(" (fst le) " " (fst la) " " (fst lb) " " (fst lc) " " (fst ld) ")"))))
+	(defvar res (cons calc res))
+	(defvar la (rst la))
+	(defvar lb (rst lb))
+	(defvar lc (rst lc))
+	(defvar ld (rst ld))
+	(defvar le (rst le))
+	(defvar start (+ 1 start))
+))
+
+(writeln (reduce + 0 res))
